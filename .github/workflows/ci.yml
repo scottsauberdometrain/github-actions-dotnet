@@ -16,9 +16,14 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0
+          cache: true
+          cache-dependency-path: "**/packages.lock.json"
+
+      - name: dotnet restore
+        run: dotnet restore --locked-mode
 
       - name: dotnet test
-        run: dotnet test --configuration Release
+        run: dotnet test --configuration Release --no-restore
 
       - name: dotnet publish
         run: dotnet publish src/GitHubActionsDotNet.Api/GitHubActionsDotNet.Api.csproj --configuration Release -o artifacts

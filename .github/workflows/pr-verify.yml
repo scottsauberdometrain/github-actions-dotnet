@@ -17,8 +17,11 @@ jobs:
         with:
           dotnet-version: 8.0
 
+      - name: dotnet restore
+        run: dotnet restore --locked-mode
+
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release --no-restore
 
       - name: dotnet test
         run: dotnet test --configuration Release --no-build
