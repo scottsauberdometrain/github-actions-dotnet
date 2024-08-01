@@ -40,19 +40,15 @@ jobs:
   deploy_dev:
     name: Deploy Dev
     needs: build
-    runs-on: ubuntu-latest
-    environment: dev
-    steps:
-      - uses: ./.github/workflows/step-deploy.yml
-        with:
-          env: dev
+    uses: ./.github/workflows/step-deploy.yml
+    with:
+      env: dev
+    secrets: inherit
 
   deploy_prod:
     name: Deploy Prod
     needs: build
-    runs-on: ubuntu-latest
-    environment: prod
-    steps:
-      - uses: ./.github/workflows/step-deploy.yml
-        with:
-          env: prod
+    uses: ./.github/workflows/step-deploy.yml
+    with:
+      env: prod
+    secrets: inherit
