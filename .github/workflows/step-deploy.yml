@@ -46,6 +46,7 @@ jobs:
           az deployment group create \
             --name ${{ inputs.env }}-deployment-${{ github.run_number }} \
             --template-file infrastructure/main.bicep \
+            --parameters environment=${{ inputs.env }}
             --resource-group ${{ inputs.resource_group_name }} \
             --verbose
 
