@@ -40,7 +40,7 @@ jobs:
   deploy_dev:
     name: Deploy Dev
     needs: build
-    uses: ./.github/workflows/step-deploy.yml
+    uses: scottsauberdometrain/github-actions-reusable/.github/workflows/step-deploy.yml@main
     with:
       env: dev
     secrets: inherit
@@ -48,7 +48,7 @@ jobs:
   deploy_prod:
     name: Deploy Prod
     needs: deploy_dev
-    uses: ./.github/workflows/step-deploy.yml
+    uses: scottsauberdometrain/github-actions-reusable/.github/workflows/step-deploy.yml@main
     with:
       env: prod
     secrets: inherit
